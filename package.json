@@ -20,7 +20,8 @@
     "web3modal": "1.9.5",
     "hardhat": "^2.12.3",
     "@nomiclabs/hardhat-ethers": "^2.2.1",
-    "@nomiclabs/hardhat-waffle": "^2.0.3"
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "ethers": "^5.7.2"
   },
   "devDependencies": {
     "autoprefixer": "10.4.2",
@@ -33,7 +34,6 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "ethereum-waffle": "^3.4.4",
-    "ethers": "^5.7.2",
     "postcss": "8.4.7",
     "tailwindcss": "3.0.23"
   }
