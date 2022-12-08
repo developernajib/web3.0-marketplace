@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import images from "../assets";
 import { Button } from ".";
+import { NFTContext } from "../context/NFTContext";
 
 const MenuItems = ({ isMobile, active, setActive }) => {
   const generateLink = (index) => {
@@ -21,6 +22,7 @@ const MenuItems = ({ isMobile, active, setActive }) => {
         return "/";
     }
   };
+
   return (
     <ul
       className={`list-none flexCenter flex-row ${
@@ -49,8 +51,8 @@ const MenuItems = ({ isMobile, active, setActive }) => {
 };
 
 const ButtonGroup = ({ setActive, router }) => {
-  const hasConnected = true;
-  return hasConnected ? (
+  const { connectWallet, currentAccount } = useContext(NFTContext);
+  return currentAccount ? (
     <Button
       btnName="Create"
       classStyles="mx-2 rounded-xl"
@@ -63,7 +65,7 @@ const ButtonGroup = ({ setActive, router }) => {
     <Button
       btnName="Connect"
       classStyles="mx-2 rounded-xl"
-      handleClick={() => {}}
+      handleClick={connectWallet}
     />
   );
 };

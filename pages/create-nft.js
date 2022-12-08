@@ -1,11 +1,13 @@
 /* eslint-disable quotes */
-import { useState, useEffect, useCallback, useContext, useMemo } from "react";
+import { useState, useCallback, useContext, useMemo } from "react";
 import { useRouter } from "next/router";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+
 import { Button, Input } from "../components";
 import images from "../assets";
+import { NFTContext } from "../context/NFTContext";
 
 const CreateNFT = () => {
   const [fileUrl, setFileUrl] = useState(null);
@@ -15,9 +17,12 @@ const CreateNFT = () => {
     description: "",
   });
   const { theme } = useTheme();
+  const { uploadToIPFS } = useContext(NFTContext);
 
-  const onDrop = useCallback(() => {
-    // Upload image to the ipfs
+  const onDrop = useCallback(async (acceptedFile) => {
+    const url = await uploadToIPFS(acceptedFile[0]);
+    console.log({ url });
+    setFileUrl(url);
   }, []);
 
   const {
