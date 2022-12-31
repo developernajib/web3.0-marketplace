@@ -17,11 +17,11 @@ const CreateNFT = () => {
     description: "",
   });
   const { theme } = useTheme();
-  const { uploadToIPFS } = useContext(NFTContext);
+  const { uploadToIPFS, createNFT } = useContext(NFTContext);
+  const router = useRouter();
 
   const onDrop = useCallback(async (acceptedFile) => {
     const url = await uploadToIPFS(acceptedFile[0]);
-    console.log({ url });
     setFileUrl(url);
   }, []);
 
@@ -42,13 +42,13 @@ const CreateNFT = () => {
       ${isDragActive && "border-file-active"},
       ${isDragAccept && "border-file-accept"},
       ${isDragReject && "border-file-reject"}`,
-    [isDragActive, isDragAccept, isDragReject]
+    [isDragActive, isDragAccept, isDragReject],
   );
 
   return (
     <div className="flex justify-center sm:px-4 p-12">
       <div className="w-3/5 md:w-full">
-        <div className="font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold ml-4 xs:ml-0">
+        <div className="font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold">
           Create new item
         </div>
         <div className="mt-16">
@@ -93,31 +93,25 @@ const CreateNFT = () => {
           inputType="input"
           title="Name"
           placeholder="Product Name"
-          handleClick={(event) => {
-            setFormInput({ ...formInput, name: event.target.value });
-          }}
+          handleClick={(event) => (setFormInput({ ...formInput, name: event.target.value }))}
         />
         <Input
           inputType="textarea"
           title="Description"
           placeholder="Product Description"
-          handleClick={(event) => {
-            setFormInput({ ...formInput, description: event.target.value });
-          }}
+          handleClick={(event) => (setFormInput({ ...formInput, description: event.target.value }))}
         />
         <Input
           inputType="number"
           title="Price"
           placeholder="Product Price"
-          handleClick={(event) => {
-            setFormInput({ ...formInput, price: event.target.value });
-          }}
+          handleClick={(event) => (setFormInput({ ...formInput, price: event.target.value }))}
         />
         <div className="mt-7 w-full flex justify-end">
           <Button
             btnName="Create Product"
             className="rounded-xl"
-            handleClick={() => {}}
+            handleClick={() => createNFT(formInput, fileUrl, router)}
           />
         </div>
       </div>

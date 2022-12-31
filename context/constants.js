@@ -1,6 +1,6 @@
-// deployed address: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+// deployed address: 0x8dC5c8B4471978607aA4880326E68CF814Bc6Bb8
 /* eslint-disable quotes */
 import market from "./NFTMarketplace.json";
 
-export const MarketAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+export const MarketAddress = "0x8dC5c8B4471978607aA4880326E68CF814Bc6Bb8";
 export const MarketAddressABI = market.abi;
