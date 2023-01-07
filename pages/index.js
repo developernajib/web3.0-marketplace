@@ -17,9 +17,7 @@ const index = () => {
 
   useEffect(() => {
     fetchNFTs().then((items) => {
-      console.log("hi");
       setNfts(items);
-      console.log(items);
     });
   }, []);
 
@@ -117,19 +115,7 @@ const index = () => {
             <div>SearchBar</div>
           </div>
           <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index2) => (
-              <NFTCard
-                key={`nft-${index2}`}
-                nft={{
-                  index2,
-                  name: `Nifty NFT ${index2}`,
-                  price: (10 - index2 * 0.512).toFixed(2),
-                  seller: `0x${makeId(3)}.....${makeId(4)}`,
-                  owner: `0x${makeId(3)}.....${makeId(4)}`,
-                  description: "Cool NFT on Sale",
-                }}
-              />
-            ))}
+            {nfts.map((nft) => <NFTCard key={nft.tokenId} nft={nft} />)}
           </div>
         </div>
       </div>
